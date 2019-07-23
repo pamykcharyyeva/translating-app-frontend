@@ -9,6 +9,15 @@
 
 // To learn more about the benefits of this model and instructions on how to
 // opt-in, read https://bit.ly/CRA-PWA
+// import ServiceWorkerWebpackPlugin from 'serviceworker-webpack-plugin';
+ 
+// ...
+ 
+//   plugins: [
+//     new ServiceWorkerWebpackPlugin({
+//       entry: path.join(__dirname, 'src/sw.js'),
+//     }),
+//   ],
 
 const isLocalhost = Boolean(
   window.location.hostname === 'localhost' ||

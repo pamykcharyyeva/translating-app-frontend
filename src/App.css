@@ -1,33 +1,124 @@
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap');
+
+body{
+  font-family: 'Source Sans Pro' !important; 
+  
+}
+
 .App {
   text-align: center;
+  background-color: #28a789;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
+.card {
+  position: relative;
+  width: 100% !important;
+  margin-top: 40%;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.center-div {
+  top: 0;
+  bottom: 0;
+  background-color:  #28a789;
 }
 
-.App-link {
-  color: #61dafb;
+.nav-bar {
+  background: #f3e43e;
+  height: 40px;
+  border-bottom: 0.9px solid #d5e6ea;
+  
+
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.left-sidebar {
+  float: left;
+  width: 20%;
+  position: absolute;
+  bottom: 0;
+  top: 0;
+   border-left: 0.5px solid gray;
+  background-color:  #28a789;
+ 
 }
+
+.right-sidebar {
+  right: right;
+  width: 20%;
+  position: absolute;
+  bottom: 0;
+  top: 40px;
+  /* border-left: 0.5px solid gray; */
+  background: #28a789;
+  position:absolute;
+  text-align: center;
+  margin-right: 20%;
+  width: 100%;
+}
+
+#second-main-content {
+  position:fixed;
+  text-align: center;
+  left: 5%;
+  margin-right: 20%;
+  width: 65%;
+  top: 40px;
+  bottom: 0;
+  background-image: 'https://thumbs.dreamstime.com/z/hello-everyone-different-people-around-world-salute-their-language-47303269.jpg'
+}
+
+#login-form {
+  margin-top: 10%;
+  width: 50%;
+  margin-left: 40%;
+  background: #f3e43e;
+  position:absolute;
+}
+
+#sign-up-form {
+  margin-top: 10%;
+  position:absolute;
+  width: 60%;
+  margin-left: 40%;
+  background: #f3e43e;
+}
+
+
+
+.single-nav-link {
+  float:left;
+  margin-top: 0.5%;
+  margin-right: 3%;
+  
+}
+
+.foo {
+  text-align: left;
+  margin-left: 23%;
+  width:40%;
+}
+
+
+.upload-file-button {
+  display: inline;
+}
+
+.home-login-error {
+  margin-top: 25%;
+  margin-left: 40%;
+}
+
+.selected-convo {
+  position: fixed;
+  bottom: 0px;
+  width: 60%;
+}
+
+.message{
+  text-align: right;
+}
+
+.asdf {
+  display: inline-flex;
+}
+
+
