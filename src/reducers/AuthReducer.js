@@ -3,6 +3,9 @@ export default function AuthReducer (state={currentUser: {}, token: null}, actio
 		case "LOG_IN":
 			localStorage.setItem('jwt', action.payload.jwt)
 			return {...state, currentUser: action.payload.user, token: action.payload.jwt}
+		case "SIGN_UP":
+			localStorage.setItem('jwt', action.payload.jwt)
+			return {...state, currentUser: action.payload.user, token: action.payload.jwt}
 		case "LOG_OUT":
 		    localStorage.removeItem('jwt')
 			return {...state, currentUser:{}, token: action.payload.jwt } 

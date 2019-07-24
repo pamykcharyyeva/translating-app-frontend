@@ -21,6 +21,7 @@ componentDidMount(){
 			fetch('http://localhost:3000/conversations')
 					.then(res => res.json())
 					.then(data => {
+						console.log(data)
 						this.setState({
 							conversations: data
 				})

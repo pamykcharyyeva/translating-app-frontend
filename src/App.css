@@ -12,8 +12,9 @@ body{
 
 .card {
   position: relative;
-  width: 100% !important;
+  width: 30% !important;
   margin-top: 40%;
+  margin-bottom: 0%;
 }
 
 .center-div {
@@ -26,7 +27,7 @@ body{
   background: #f3e43e;
   height: 40px;
   border-bottom: 0.9px solid #d5e6ea;
-  
+  position: relative;
 
 }
 
@@ -98,9 +99,9 @@ body{
 }
 
 
-.upload-file-button {
+/* .upload-file-button {
   display: inline;
-}
+} */
 
 .home-login-error {
   margin-top: 25%;

@@ -8,9 +8,17 @@ class ConversationsContainer extends React.Component {
 
 mapThroughConversations = () => {
 	return this.props.conversations.map(conversation => {
-		return <div key={conversation.id}><Link to={`/conversations/${conversation.id}`} onClick={() => this.props.selectedConversation(conversation.id)} style={{color: 'white'}}>{conversation.title}</Link></div>
-	})
-}
+		console.log("hgfgd",conversation)
+		return conversation.messages.map(message=> {
+			return <div key={message.id}>  {message.text}</div>
+		})
+		})	
+
+	}
+	// Two function that renders one: conversation
+	// one is rendering text
+	// 	return <div key={conversation.id}><Link to={`/conversations/${conversation.messages.id}`} onClick={() => this.props.selectedConversation(conversation.messages.id)} style={{color: 'white'}}>{conversation.messages.title}</Link></div>
+	// }
 
 renderItems = () => {
 	return !this.props.token ?
@@ -21,7 +29,7 @@ renderItems = () => {
           channel={{ channel: 'ConversationsChannel' }}
           onReceived={this.props.handleReceivedConversation}
         />
-		<div style={{color: 'white', fontWeight: 'bold', marginLeft: 20, textAlign: 'left'}}>Your Channels:</div>
+		<div style={{color: 'white', fontWeight: 'bold', marginRight: 110, textAlign: 'right'}}>Your Channels:</div>
 		<div style={{marginRight: 110,  textAlign: 'right', fontSize: 20}}>
 			{this.mapThroughConversations()}
 		</div>

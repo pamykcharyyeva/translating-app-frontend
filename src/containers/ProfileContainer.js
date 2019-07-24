@@ -10,18 +10,18 @@ return !props.token ?
 	 null
 	:
   (
-    <div className="right-sidebar">
+    <div className="sidebar">
       
       <div id="profile-card">
-		<Card  bg="danger" text="white" style={{ width: '18rem' }}>
-		  <Card.Img variant="top" src="holder.js/100px180?text=Image cap" />
+		<Card  bg="danger" text="yellow" style={{ width: '18rem' }}>
+		  
 		  <Card.Body>
 		    <Card.Title>{props.currentUser.first_name} {props.currentUser.last_name}</Card.Title>
 		  </Card.Body>
 		  <ListGroup className="list-group-flush">
 		    <ListGroupItem>Email: {props.currentUser.email}</ListGroupItem>
 		    <ListGroupItem>Language: {props.currentUser.language}</ListGroupItem>
-			<ListGroupItem>Bio: {props.currentUser.bio}</ListGroupItem>
+			<ListGroupItem>Location: {props.currentUser.location}</ListGroupItem>
 		  </ListGroup>
 		</Card>
 	  </div>
