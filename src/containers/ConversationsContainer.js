@@ -10,7 +10,7 @@ mapThroughConversations = () => {
 	return this.props.conversations.map(conversation => {
 		console.log("hgfgd",conversation)
 		return conversation.messages.map(message=> {
-			return <div key={message.id}>  {message.text}</div>
+			return <div key={message.id}> {message.title} {message.text}</div>
 		})
 		})	
 
