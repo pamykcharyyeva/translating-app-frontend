@@ -22,7 +22,7 @@ class ConversationsContainer extends React.Component {
 	}
 
 	renderConversations = (convos) => {
-		return convos.map(convo => <div key={convo.id}>{convo.title}</div>)
+		return convos.map(convo => <div key={convo.id}><strong>{convo.creator}</strong> - {convo.title}</div>)
 	}
 
 	handleChange = (e) => {
@@ -40,7 +40,9 @@ class ConversationsContainer extends React.Component {
             'Accepts': 'application/json'
           },
           body: JSON.stringify({
-                title: this.state.text,
+				title: this.state.text,
+				user_id: this.props.currentUser.id,
+				creator: this.props.currentUser.first_name
               })
 		})
 		.then(res=>res.json())
@@ -49,6 +51,7 @@ class ConversationsContainer extends React.Component {
 				text: ""
 			})
 		})
+	.catch(error => console.error(error))		
 	}
 
 
@@ -62,8 +65,13 @@ renderItems = () => {
           channel={{ channel: 'ConversationsChannel' }}
           onReceived={(data) => this.setState({conversations: [...this.state.conversations, data]})}
         />
-		<div>
-			{this.renderConversations(this.state.conversations)}
+		<div className="conversation-div">
+			<h3> Conversations:</h3>
+			<div id="message-container">
+				<div id="chat">
+				{this.renderConversations(this.state.conversations)}
+				</div>
+			</div>
 			<form id="message-form" onChange={this.handleChange} onSubmit={this.handleSubmit}>
 				<input name="text" type="text" />
 				<button type="submit">submit</button>

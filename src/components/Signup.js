@@ -16,7 +16,7 @@ class Signup extends React.Component {
 		last_name: "",
 		email: "",
 		password:"",
-		password_confirmation: "",
+		// password_confirmation: "",
 		location: "",
 		language: "",
 	}
@@ -55,13 +55,13 @@ class Signup extends React.Component {
 		// if (password !== password_confirmation){
 		// 	alert("passwords do not match")
 		// } else {
-			this.props.signup(this.state, this.props, this.props.password)
+			this.props.signup(this.state, this.props, this.state.password)
 			this.setState({
 				first_name: "",
 				last_name: "",
 				email: "",
 				password: "",
-				password_confirmation: "",
+				// password_confirmation: "",
 				language:"",
 				location:""
 			})
@@ -70,6 +70,7 @@ class Signup extends React.Component {
 }
 
 	render(){
+		console.log(this.state)
 		return(
 			<div>
 				<br/>
@@ -99,10 +100,10 @@ class Signup extends React.Component {
 				    <Form.Control name="password" type ="password" placeholder="Password" onChange={this.handleChange}/>
 				</Form.Group>
 
-				<Form.Group as={Col} controlId="formGridPassword2">
+				{/* <Form.Group as={Col} controlId="formGridPassword2">
 				    <Form.Label>Confirm Password</Form.Label>
 				    <Form.Control name="password_confirmation" type= "password_confirmation" placeholder="Confirm Password" onChange={this.handleChange}/>
-				</Form.Group>
+				</Form.Group> */}
 			</Form.Row>
 			
 			<Form.Row>

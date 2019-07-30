@@ -22,8 +22,9 @@ export function signup(userData, props, password){
         alert(data.errors);
       } else {
         localStorage.setItem("token", data.token);
+        // console.log(data)
         props.history.push('/home')
-        dispatch({type: "SIGN_UP", payload: {user: data.user, jwt: data.token}})
+        dispatch({type: "LOG_IN", payload: {user: data.user, jwt: data.token}})
       }
     })
   }
