@@ -1,6 +1,6 @@
 
 import React from 'react'
-import Form from 'react-bootstrap/Form'
+import {Form}  from 'react-bootstrap'
 import { Button } from 'react-bootstrap';
 import Col from 'react-bootstrap/Col'
 // import { Link } from 'react-router-dom'
@@ -27,26 +27,26 @@ class Signup extends React.Component {
 		})
 	}
 
-	// createUser = () => {
-	// 	fetch("http://localhost:3000/users", {
-	// 		method: "POST",
-	// 		headers: {
-	// 			"Content-Type": "application/json",
-	// 			"Accepts": "application/json",
-	// 		},
-	// 		body: JSON.stringify(this.state)
-	// 	})
-	// 	.then(res => res.json())
-	// 	.then((response) => {
-	// 		if (response.errors){
-	// 			alert(response.errors)
-	// 		} else {
-	// 			localStorage.setItem("token", response.token)
-	// 			this.props.login(response.user)
-	// 			this.props.history.push(`/users/${response.user.id}`)
-	// 		}
-	// 	})
-	// }
+	createUser = () => {
+		fetch("http://localhost:3000/users", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+				"Accepts": "application/json",
+			},
+			body: JSON.stringify(this.state)
+		})
+		.then(res => res.json())
+		.then((response) => {
+			if (response.errors){
+				alert(response.errors)
+			} else {
+				localStorage.setItem("token", response.token)
+				this.props.login(response.user)
+				this.props.history.push(`/users/${response.user.id}`)
+			}
+		})
+	}
 
 
 	handleSubmit = (e) => {
@@ -55,7 +55,7 @@ class Signup extends React.Component {
 		// if (password !== password_confirmation){
 		// 	alert("passwords do not match")
 		// } else {
-			this.props.signup(this.state, this.props, this.state.password)
+			this.props.signup(this.state, this.props, this.props.password)
 			this.setState({
 				first_name: "",
 				last_name: "",
@@ -66,7 +66,8 @@ class Signup extends React.Component {
 				location:""
 			})
 		// }
-	}
+	// }
+}
 
 	render(){
 		return(
@@ -93,14 +94,14 @@ class Signup extends React.Component {
 				    </Form.Group>
 
 			<Form.Row>
-				<Form.Group controlId="formGridAPassword1">
+				<Form.Group as={Col} controlId="formGridAPassword1">
 				    <Form.Label>Password</Form.Label>
-				    <Form.Control name="password" placeholder="Password" onChange={this.handleChange}/>
+				    <Form.Control name="password" type ="password" placeholder="Password" onChange={this.handleChange}/>
 				</Form.Group>
 
-				<Form.Group controlId="formGridPassword2">
+				<Form.Group as={Col} controlId="formGridPassword2">
 				    <Form.Label>Confirm Password</Form.Label>
-				    <Form.Control name="password_confirmation" placeholder="Confirm Password" onChange={this.handleChange}/>
+				    <Form.Control name="password_confirmation" type= "password_confirmation" placeholder="Confirm Password" onChange={this.handleChange}/>
 				</Form.Group>
 			</Form.Row>
 			
@@ -129,10 +130,6 @@ class Signup extends React.Component {
 }
 
 
-const mapStateToProps = (state) => {
-	return {
-	 ...state.auth
-	}
-  }
+
   
-  export default connect(mapStateToProps, actions)(Signup)
+  export default connect(null, actions)(Signup)

@@ -1,5 +1,6 @@
 import React from 'react'
 import Message from './Message'
+import {Form}  from 'react-bootstrap'
 import * as actions from '../actions/SelectedConversation.js'
 import { connect } from 'react-redux'
 import InputGroup from 'react-bootstrap/InputGroup'
@@ -16,6 +17,13 @@ class CurrentConversation extends React.Component {
 	componentDidMount() {
 		this.props.selectedConversation(this.props.match.params.id)
 	}
+
+	handleJoinClick = () => {
+		
+		this.props.joinConversation(this.props.currentUser, this.props.currentConversation, this.props)
+			
+	}
+
 
 
 
@@ -51,13 +59,14 @@ class CurrentConversation extends React.Component {
 		return this.props.currentConversation.messages && this.props.currentConversation.messages.map(message => <Message key={message.id} {...message}/>)
 	}
 
+
+
 	renderEntireConversation = () => {
 		return this.props.currentConversation.messages && this.props.token ?
 		(
 			<div className="selected-convo">
 			{this.renderMessages()}
 			<ActionCableConsumer
-	          channel={{ channel: 'ConversationsChannel' }}
 	          onReceived={(data) => {
 	          	this.props.resetCurrentConversation(this.props.currentConversation, data)
 	          	this.setState({message: ''})
@@ -65,16 +74,9 @@ class CurrentConversation extends React.Component {
 	          }
 	          channel={{channel: 'MessagesChannel', conversation_id: this.props.currentConversation.id}}
 	        />
-		
-			<InputGroup className="mb-3" style={{paddingTop: 10}}>
-			    <FormControl
-			     onChange={this.handleChange} value={this.state.message} placeholder="Write a message..."
-			     
-			    />
-			    <InputGroup.Append>
-			      <Button onClick={this.handleSubmit} variant="outline-secondary">Send</Button>
-			    </InputGroup.Append>
-			  </InputGroup>
+	        {this.renderMessageForm()}
+			
+			
 		</div>)
 		:
 		null
@@ -82,8 +84,33 @@ class CurrentConversation extends React.Component {
 	}
 
 
+
+
+
+
+	renderMessageForm = () => {
+		let userConvoIds = this.props.currentUser.conversations.map(convo => convo.id)
+		return userConvoIds.includes(this.props.currentConversation.id) ?
+				(<Form onSubmit={this.handleSubmit}>
+				  <InputGroup className="mb-3" style={{paddingTop: 10}}>
+				    <FormControl
+				     onChange={this.handleChange} value={this.state.message} placeholder="Write a message..."
+				     
+				    />
+				    <InputGroup.Append>
+				      <Button type="submit" variant="outline-secondary">Send</Button>
+				    </InputGroup.Append>
+				  </InputGroup>
+				</Form>)
+				: 
+			 <Button onClick={this.handleJoinClick} variant="outline-secondary">Join Channel?</Button>
+		}
+
+
+
+
+
 	render(){
-		console.log(this.props.currentConversation.messages)
 		return(
 			<div>
 				{this.renderEntireConversation()}

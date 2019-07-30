@@ -1,26 +1,21 @@
 import React from 'react'
+import * as actions from '../actions/SelectedConversation'
+import { connect } from 'react-redux'
+
+
 
 class Message extends React.Component {
-	state = {
-		messageUser: {}
+
+	handleClick = (user_id, reducer) => {
+		reducer(user_id)
 	}
 
-	componentDidMount(){
-		fetch(`http://localhost:3000/users/${this.props.user_id}`)
-		.then(res => res.json())
-		.then(user => {
-			this.setState({
-				messageUser: user
-			})
-		})
-	}
-
-	render(){
+		render(){
 		return(
 			<div className="message">
 				<div className="asdf">
 					<div>
-						<strong>{this.state.messageUser.first_name} {this.state.messageUser.last_name}</strong>
+						<strong style={{cursor: 'pointer'}} onClick={() => this.handleClick(this.props.user_id, this.props.selectUser)}>{this.props.user_name}</strong>
 					</div>
 					<div>
 						&nbsp;&nbsp;&nbsp;&nbsp;
@@ -33,4 +28,8 @@ class Message extends React.Component {
 	}
 }
 
-export default Message
+function mapStateToProps(state){
+	return {...state.auth}
+}
+
+export default connect(mapStateToProps, actions)(Message)

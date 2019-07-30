@@ -6,36 +6,75 @@ import { ActionCableConsumer } from 'react-actioncable-provider'
 
 class ConversationsContainer extends React.Component {
 
-mapThroughConversations = () => {
-	return this.props.conversations.map(conversation => {
-		console.log("hgfgd",conversation)
-		return conversation.messages.map(message=> {
-			return <div key={message.id}> {message.title} {message.text}</div>
-		})
-		})	
-
+	state = {
+		text: "",
+		conversations: []
 	}
-	// Two function that renders one: conversation
-	// one is rendering text
-	// 	return <div key={conversation.id}><Link to={`/conversations/${conversation.messages.id}`} onClick={() => this.props.selectedConversation(conversation.messages.id)} style={{color: 'white'}}>{conversation.messages.title}</Link></div>
-	// }
+
+	componentDidMount(){
+		fetch('http://localhost:3000/conversations')
+		.then(res => res.json())
+		.then(data => {
+			this.setState({
+				conversations: data
+			})
+		})
+	}
+
+	renderConversations = (convos) => {
+		return convos.map(convo => <div key={convo.id}>{convo.title}</div>)
+	}
+
+	handleChange = (e) => {
+		this.setState({
+			[e.target.name]: e.target.value
+		})
+	}
+
+	handleSubmit = (e) => {
+        e.preventDefault()
+        fetch('http://localhost:3000/conversations', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accepts': 'application/json'
+          },
+          body: JSON.stringify({
+                title: this.state.text,
+              })
+		})
+		.then(res=>res.json())
+		.then(data => {
+			this.setState({
+				text: ""
+			})
+		})
+	}
+
 
 renderItems = () => {
+	console.log(this.state.text)
 	return !this.props.token ?
 		null
 	:
 	<div>
 		<ActionCableConsumer
           channel={{ channel: 'ConversationsChannel' }}
-          onReceived={this.props.handleReceivedConversation}
+          onReceived={(data) => this.setState({conversations: [...this.state.conversations, data]})}
         />
-		<div style={{color: 'white', fontWeight: 'bold', marginRight: 110, textAlign: 'right'}}>Your Channels:</div>
-		<div style={{marginRight: 110,  textAlign: 'right', fontSize: 20}}>
-			{this.mapThroughConversations()}
+		<div>
+			{this.renderConversations(this.state.conversations)}
+			<form id="message-form" onChange={this.handleChange} onSubmit={this.handleSubmit}>
+				<input name="text" type="text" />
+				<button type="submit">submit</button>
+			</form>
 		</div>
 	</div>
  
 }
+
+
+
 
 render(){
   return (

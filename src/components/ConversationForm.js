@@ -13,7 +13,7 @@ class ConversationForm extends React.Component {
 	}
 
 	fullName = () => {
-		return `${this.props.first_name} ${this.props.last_name}`
+		return `${this.props.first_name} ${this.props.last_name} ${this.props.currentUser}`
 	}
 
 
@@ -25,7 +25,7 @@ class ConversationForm extends React.Component {
 
 	handleSubmit = (e) => {
 		e.preventDefault()
-		this.props.createConversation(this.state, this.props, this.fullName())
+		this.props.createConversation(this.state, this.props, this.fullName(), this.props.currentUser)
 		this.setState({
 			title: "",
 			purpose: ""
@@ -61,7 +61,7 @@ class ConversationForm extends React.Component {
 
 
 function mapStateToProps(state){
-	return({...state.auth.currentUser})
+	return({...state.auth})
 }
 
 export default connect(mapStateToProps, actions)(ConversationForm)

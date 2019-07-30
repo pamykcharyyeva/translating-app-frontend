@@ -1,9 +1,11 @@
-export default function CurrentSelectedReducer (state={selectedUser: {}, CurrentConversation: {}}, action){
+export default function currentSelectedReducer (state={currentConversation: {}}, action){
 	switch(action.type){
 		case "SELECT_USER":
 			return {...state, selectedUser: action.payload.user}
 		case "SELECT_CONVERSATION":
-			return {...state, CurrentConversation: action.payload.CurrentConversation}
+			return {...state, currentConversation: action.payload.currentConversation}
+		case "DESELECT_CONVERSATION":
+			return {...state, currentConversation: action.payload.currentConversation}
 		default:
 			return state
 	}	

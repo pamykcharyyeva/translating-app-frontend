@@ -12,23 +12,11 @@ import 'bootstrap/dist/css/bootstrap.css';
 
 class App extends React.Component {
 
-state = {
-	conversations: []
-}
 
 componentDidMount(){
 		const token = localStorage.getItem("token")
-			fetch('http://localhost:3000/conversations')
-					.then(res => res.json())
-					.then(data => {
-						console.log(data)
-						this.setState({
-							conversations: data
-				})
-			})
 		if(token){
-			this.props.autoLogin(token)
-
+			this.props.AutoLogin(token)
 	}
 }
 
@@ -51,16 +39,23 @@ handleReceivedMessage = response => {
 
 
 render(){
-	// console.log(this.props)
+	console.log(this.props)
 	  	return (
 	  		<Router>
 			    <div className="App">
-			      <ConversationsContainer handleReceivedMessage={this.handleReceivedMessage} handleReceivedConversation={this.handleReceivedConversation} conversations={this.state.conversations}/>
-			      <MainContainer conversations={this.state.conversations} />
+			      <ConversationsContainer />
+			      <MainContainer />
 			    </div>
 		    </Router>
 	  	);
 	}
 }
 
-export default connect(null, actions)(App);
+
+
+function mapStateToProps(state){
+	return ({...state.auth})
+}
+
+export default connect(mapStateToProps, actions)(App);
+

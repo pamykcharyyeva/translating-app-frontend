@@ -17,15 +17,16 @@ class MainContainer extends React.Component {
     <div className="center-div">
     	<NavBar />
       
-      	<div id="main-content" >
-          <div id="second-main-content">
+      	<div  >
+          {/* <div id="second-main-content"> */}
           	 <Route path="/login" component={ Login } />
              <Route path="/signup" component={ Signup } />
              <Route path='/home' component={ Home } />
-             <Route path='/conversations/new' render={(routerProps) => <ConversationForm conversations={this.props.conversations} {...routerProps} />} />
+             <Route path='/conversations/new' component={ ConversationForm } />
+
              <Route path='/conversations/:id' render={(routerProps) => <CurrentConversation conversations={this.props.conversations} {...routerProps} />} />
           </div>
-        </div>
+        {/* </div> */}
 
         <ProfileContainer />
 
