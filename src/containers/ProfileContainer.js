@@ -17,10 +17,11 @@ return !props.token ?
       <div id="profile-card"></div>
       
       
-		<Card  bg="danger" text="yellow" style={{ width: '18rem' }}>
+		{/* <Card  bg="danger" text="yellow" style={{ width: '18rem' }}> */}
+		<Card id="profile-card">
 		  
 		  <Card.Body>
-		    <Card.Title>{props.currentUser.first_name} {props.currentUser.last_name}</Card.Title>
+		    <Card.Title style={{color: 'black', fontWeight: 'bold'}}>{props.currentUser.first_name} {props.currentUser.last_name}</Card.Title>
 		  </Card.Body>
 		  <ListGroup className="list-group-flush">
 		    <ListGroupItem>Email: {props.currentUser.email}</ListGroupItem>

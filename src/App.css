@@ -7,7 +7,7 @@ body{
 
 .App {
   text-align: center;
-  background-color: #28a789;
+  background-color: #27BCCF;
  
 }
 
@@ -21,13 +21,13 @@ body{
 .center-div {
   top: 0;
   bottom: 0;
-  background-color:  #28a789;
+  background-color:  #2BCFC1;
 }
 
 .nav-bar {
-  background: #f3e43e;
-  height: 40px;
-  border-bottom: 0.9px solid #d5e6ea;
+  background: #2BCFC1;
+  height: 45px;
+  border-bottom: 7px solid #d5e6ea;
   position: relative;
 
 }
@@ -39,8 +39,8 @@ body{
   bottom: 0;
   top: 0;
    border-left: 0.5px solid gray;
-  background-color:  #28a789;
-  background-image: url("./img.jpg");
+  background-color: #27BCCF;
+  /* background-image: url("./img.jpg"); */
 }
 
 .right-sidebar {
@@ -50,7 +50,7 @@ body{
   bottom: 0;
   top: 40px;
   /* border-left: 0.5px solid gray; */
-  background: #28a789;
+  background: #29C48B;
   position:absolute;
   text-align: center;
   margin-right: 20%;
@@ -71,17 +71,19 @@ body{
 #login-form {
   margin-top: 10%;
   width: 50%;
-  margin-left: 40%;
-  background: #f3e43e;
+  margin-left: 25%;
+  background: #2BCFC1;
   position:absolute;
+  border: 10px solid white;
 }
 
 #sign-up-form {
-  margin-top: 10%;
+  margin-top: 5%;
   position:absolute;
   width: 60%;
-  margin-left: 40%;
-  background: #f3e43e;
+  margin-left: 20%;
+  background: #2BCFC1;
+  border: 10px solid white;
 }
 
 
@@ -90,6 +92,7 @@ body{
   float:left;
   margin-top: 0.5%;
   margin-right: 3%;
+  color: black;
   
 }
 
@@ -127,7 +130,7 @@ body{
 
 #message-form {
   float: right;
-  overflow: hidden;
+  overflow-y: scroll;
   margin-right: 25%;
   z-index: 5;
 }
@@ -135,15 +138,16 @@ body{
 #message-container{
   position: relative;
   height: 500px;
+  margin-top: 5% !important;
  
   overflow: auto;
   float:right;
   /* overflow: auto; */
   width:60%;
-  border: 10px solid red;
-  background-color: #149da1;
+  border: 10px solid white;
+  background-color: #2BCFC1;
 }
-#chat{
+#chat {
   position: relative;
   
   /* bottom: 0; */
@@ -152,3 +156,11 @@ body{
   margin-top: -6%;
 }
 
+#profile-card {
+  background-color: #2BCFC1;
+  /* border: 10px solid white;
+  width: 45px; */
+}
+
+
+	/* {<Card  bg="danger" text="yellow" style={{ width: '18rem' }}>} */

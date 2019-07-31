@@ -24,13 +24,15 @@ const renderNavItems = (props) => {
 	
 	if (!props.token) {
 		return(
-			<div >
+			<div style= {{color: 'black', fontWeight: 'bold'}} >
+				
 		    	<Link to='/login' className="single-nav-link">Login</Link>
 		    	<Link to='/signup' className="single-nav-link">Signup</Link>
+				
     		</div>
 		)
 	} else {
-		return <Link onClick={() => handleLogout(props)} className="single-nav-link" to='/login'>Logout</Link>
+		return <Link onClick={() => handleLogout(props)} style= {{color: 'black', fontWeight: 'bold'}} className="single-nav-link" to='/login'>Logout</Link>
 	}
 }
 

@@ -12,6 +12,11 @@ class ConversationsContainer extends React.Component {
 	}
 
 	componentDidMount(){
+		let form= document.getElementById("message-form")
+	console.log(form)
+	if (!!form) {
+		form.scrollIntoView()
+	}
 		fetch('http://localhost:3000/conversations')
 		.then(res => res.json())
 		.then(data => {
@@ -32,7 +37,8 @@ class ConversationsContainer extends React.Component {
 	}
 
 	handleSubmit = (e) => {
-        e.preventDefault()
+		e.preventDefault()
+		e.target.reset();
         fetch('http://localhost:3000/conversations', {
           method: 'POST',
           headers: {
@@ -55,7 +61,10 @@ class ConversationsContainer extends React.Component {
 	}
 
 
+	
 renderItems = () => {
+
+	
 	console.log(this.state.text)
 	return !this.props.token ?
 		null
@@ -66,15 +75,17 @@ renderItems = () => {
           onReceived={(data) => this.setState({conversations: [...this.state.conversations, data]})}
         />
 		<div className="conversation-div">
-			<h3> Conversations:</h3>
+			
 			<div id="message-container">
+			<h3 style={{color: 'black', fontWeight: 'bold'}}> Conversations:</h3>
+			<br/>
 				<div id="chat">
 				{this.renderConversations(this.state.conversations)}
 				</div>
 			</div>
 			<form id="message-form" onChange={this.handleChange} onSubmit={this.handleSubmit}>
 				<input name="text" type="text" />
-				<button type="submit">submit</button>
+				<button id ="submit" type="submit">submit</button>
 			</form>
 		</div>
 	</div>
@@ -87,8 +98,7 @@ renderItems = () => {
 render(){
   return (
 	    <div className="right-sidebar">
-	    <h2 style={{marginTop: 5}}><Link to="/home" style={{color: 'Blue', fontWeight: 'bold'}}>Translators App</Link></h2>
-	      
+	    <h2 style={{marginTop: 5}}><Link to="/home" style={{color: 'black', fontWeight: 'bold'}}>Translators App</Link></h2>
 	      <div style={{marginTop: 90, fontSize: 20}}>
 	        {this.renderItems()}
 	       </div>
