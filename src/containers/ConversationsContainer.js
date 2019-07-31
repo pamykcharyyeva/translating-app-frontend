@@ -98,7 +98,7 @@ renderItems = () => {
 render(){
   return (
 	    <div className="right-sidebar">
-	    <h2 style={{marginTop: 5}}><Link to="/home" style={{color: 'black', fontWeight: 'bold'}}>Translators App</Link></h2>
+	    <h2 style={{marginTop: 5}}><Link to="/home" style={{color: 'black', fontWeight: 'bold'}}>Talk & Meet App</Link></h2>
 	      <div style={{marginTop: 90, fontSize: 20}}>
 	        {this.renderItems()}
 	       </div>
