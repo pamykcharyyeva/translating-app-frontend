@@ -49,7 +49,7 @@ export function createConversation(userData, props, userName, user){
 export function selectUser(user_id){
 
 	return dispatch => {
-		fetch(`http://localhost:3001/users/${user_id}`)
+		fetch(`http://localhost:3000/users/${user_id}`)
 		.then(res => res.json())
 		.then(data => {
 			dispatch({type: "SELECT_USER", payload: {selectedUser: data}})

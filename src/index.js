@@ -20,7 +20,7 @@ const store = createStore(rootReducer, applyMiddleware(thunk))
 
 ReactDOM.render(<Provider store={store}>
 	
-					<ActionCableProvider url={'ws://react-chat-app-pam.herokuapp.com//cable'}>
+					<ActionCableProvider url={'ws://localhost:3000//cable'}>
 						<App />
 					</ActionCableProvider>
 				</Provider>, 
