@@ -12,6 +12,7 @@ import thunk from 'redux-thunk'
 import { ActionCableProvider } from 'react-actioncable-provider';
 import * as serviceWorker from './serviceWorker';
 
+
 const rootReducer = combineReducers({auth: authReducer, selected: currentSelectedReducer})
 
 const store = createStore(rootReducer, applyMiddleware(thunk))
@@ -19,7 +20,7 @@ const store = createStore(rootReducer, applyMiddleware(thunk))
 
 ReactDOM.render(<Provider store={store}>
 	
-					<ActionCableProvider url={'ws://localhost:3000/cable'}>
+					<ActionCableProvider url={'ws://react-chat-app-pam.herokuapp.com//cable'}>
 						<App />
 					</ActionCableProvider>
 				</Provider>, 
